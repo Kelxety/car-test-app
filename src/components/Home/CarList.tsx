@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { CarT } from "../../utils/types/CarTypes";
 
 type Props = {
@@ -7,7 +8,8 @@ type Props = {
 
 function CarList({ car }: Props) {
   return (
-    <div
+    <Link
+      to={`/${car.id}`}
       key={car.id}
       className="rounded-lg w-full p-4 bg-white flex flex-col sm:flex-row items-center sm:justify-between hover:border-blue-500 hover:border"
     >
@@ -30,10 +32,18 @@ function CarList({ car }: Props) {
           <h2 className=" text-gray-600 hover:text-gray-400 cursor-pointer">
             {car.car}
           </h2>
-          <h3 className="text-gray-400 text-xs">{car.car_vin}</h3>
+          <h3 className="text-gray-400 text-sm">{car.car_vin}</h3>
+        </div>
+        <div className="flex flex-col sm:flex-row items-center sm:justify-between">
+          <h2 className=" text-gray-400 text-sm cursor-pointer">
+            Year Model:{" "}
+            <span className="font-semibold text-gray-600">
+              {car.car_model_year}
+            </span>
+          </h2>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
