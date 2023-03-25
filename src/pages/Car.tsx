@@ -12,27 +12,23 @@ const unsplash = createApi({
 function Car() {
   const [photos, setPhotos] = React.useState<any>([]);
   const { id } = useParams();
-  const { isLoading, isError, data } = useQuery("car", () => fetchCar("" + id));
-
-  useEffect(() => {
-    if (data) {
-      unsplash.search
-        .getPhotos({
-          query: data?.Car?.car + " " + data?.Car?.car_model,
-          orientation: "landscape",
-        })
-        .then((result) => {
-          if (result) {
-            setPhotos(result?.response?.results);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  const { isLoading, isError, data } = useQuery(
+    "car",
+    () => fetchCar("" + id),
+    {
+      onSuccess: (element) => {
+        unsplash.search
+          .getPhotos({
+            query: element?.Car?.car + " " + element?.Car?.car_model + " car",
+            orientation: "landscape",
+          })
+          .then((result) => {
+            setPhotos(result?.response?.results.splice(0, 5));
+          });
+      },
     }
-  }, [data]);
-
-  if (isLoading && photos.length === 0)
+  );
+  if (isLoading && !photos)
     return (
       <div className="w-full flex items-center justify-center">Loading...</div>
     );

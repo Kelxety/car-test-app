@@ -33,6 +33,7 @@ function Home() {
   const [numberOfItems, setNumberOfItems] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [option] = useState([5, 10, 20]);
+
   if (isLoading)
     return <div className="flex justify-center items-center">Loading...</div>;
   if (isError)

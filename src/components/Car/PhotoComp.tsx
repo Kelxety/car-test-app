@@ -1,3 +1,4 @@
+import { url } from "inspector";
 import React, { Fragment } from "react";
 import { CarPhotoT } from "../../utils/types/CarPhotoTypes";
 
