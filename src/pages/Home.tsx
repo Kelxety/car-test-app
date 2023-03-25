@@ -39,7 +39,7 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [option] = useState([5, 10, 20]);
 
-  if (isLoading)
+  if (isLoading && !loadImage)
     return <div className="flex justify-center items-center">Loading...</div>;
   if (isError)
     return <div className="flex justify-center items-center">Error</div>;
