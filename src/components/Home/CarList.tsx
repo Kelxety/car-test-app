@@ -13,9 +13,24 @@ function CarList({ car }: Props) {
       key={car.id}
       className="rounded-lg w-full p-4 bg-white flex flex-col sm:flex-row items-center sm:justify-between hover:border-blue-500 hover:border"
     >
-      <div className="w-full h-24 rounded-lg sm:rounded-full bg-gray-500 sm:w-20 sm:h-20 flex items-center justify-center">
-        <div>Image</div>
-      </div>
+      {car.photo ? (
+        <>
+          <div className="flex sm:hidden">
+            <img
+              src={car.photo.urls.regular}
+              className="rounded-lg sm:rounded-full sm:h-24 sm:w-24 w-full object-cover"
+              alt={car.photo.alt}
+            />
+          </div>
+          <img
+            src={car.photo.urls.thumb}
+            className="rounded-lg sm:rounded-full sm:h-24 sm:w-24 w-full object-cover hidden sm:block"
+            alt={car.photo.alt}
+          />
+        </>
+      ) : (
+        <div className="w-full h-24 rounded-lg sm:rounded-full bg-gray-500 sm:w-20 sm:h-20 flex items-center justify-center"></div>
+      )}
       <div className="pl-4 flex-1">
         <div className="flex flex-col sm:flex-row items-center sm:justify-between">
           <div>
