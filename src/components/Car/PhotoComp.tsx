@@ -7,7 +7,7 @@ const PhotoComp: React.FC<{ photo: CarPhotoT }> = ({ photo }) => {
 
   return (
     <Fragment>
-      <img className="img" src={urls.regular} />
+      <img className="img" src={urls.thumb} />
       <a
         className="credit"
         target="_blank"
