@@ -80,6 +80,14 @@ function Home() {
               </select>
             </div>
           </div>
+          <div className="hidden sm:flex items-center justify-centers text-centers">
+            <h3 className="w-full items-center text-center text-sm text-gray-400">
+              Note:{" "}
+              <span className="text-sm text-gray-300">
+                Fetching only first 20 images from Unsplash API.
+              </span>
+            </h3>
+          </div>
           <div className="bg-slate-100 rounded-lg gap-4 space-y-4 p-4">
             {cars.map((car: CarT, i: number) => {
               return <CarList key={i} car={car} />;

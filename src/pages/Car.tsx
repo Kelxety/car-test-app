@@ -35,7 +35,7 @@ function Car() {
   if (isError)
     return <div className="w-full flex items-center justify-center">Error</div>;
   return (
-    <div className="w-full flex items-center justify-center mx-auto">
+    <div className="max-w-7xl flex items-center justify-center mx-auto">
       <div className="w-full flex items-center justify-center">
         <div className="container mx-auto">
           <div className="grid-cols-3 p-2 sm:p-20 space-y-2 lg:space-y-0 lg:grid lg:gap-3 lg:grid-rows-3">
