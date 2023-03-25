@@ -10,24 +10,17 @@ function Nav() {
               href="/"
               className="text-gray-800 text-lg font-semibold hover:text-gray-400"
             >
-              Home
-            </a>
-          </div>
-          <div>
-            <a href="/cars" className="text-gray-800 text-lg font-semibold">
-              Cars
+              Logo
             </a>
           </div>
         </div>
         <div className="flex space-x-4">
           <div>
-            <a href="/login" className="text-gray-800 text-lg font-semibold">
-              Login
-            </a>
-          </div>
-          <div>
-            <a href="/register" className="text-gray-800 text-lg font-semibold">
-              Register
+            <a
+              href="https://github.com/Kelxety/car-test-app"
+              className="text-gray-800 text-lg font-semibold"
+            >
+              Github
             </a>
           </div>
         </div>
