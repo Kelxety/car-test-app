@@ -7,4 +7,5 @@ export type CarT = {
   car_vin: string;
   availability: boolean;
   price: number;
+  photo: any;
 };
