@@ -18,7 +18,7 @@ function Car() {
     if (data) {
       unsplash.search
         .getPhotos({
-          query: data.Car.car + " " + data.Car.car_model,
+          query: data?.Car?.car + " " + data?.Car?.car_model,
           orientation: "landscape",
         })
         .then((result) => {
