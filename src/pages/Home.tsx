@@ -13,6 +13,7 @@ const unsplash = createApi({
 
 function Home() {
   const [loadImage, setLoadImage] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const { data, isLoading, isError } = useQuery("cars", () => fetchCars(), {
     onSuccess: (element) => {
       element.cars.map((car: CarT, i: number) => {
@@ -44,17 +45,49 @@ function Home() {
   if (isError)
     return <div className="flex justify-center items-center">Error</div>;
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-  const sliceData = (data: CarT[], page: number, rowsPerPage: number) => {
-    return data.slice((currentPage - 1) * rowsPerPage, page * rowsPerPage);
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    if (searchTerm !== "") {
+      setCurrentPage(1);
+    }
   };
 
-  const cars = sliceData(data?.cars, currentPage, numberOfItems);
+  const sliceData = (data: CarT[], page: number, rowsPerPage: number) => {
+    const filterData = data.filter(
+      (car) =>
+        car.car.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        car.car_model.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    return filterData.slice(
+      (currentPage - 1) * rowsPerPage,
+      page * rowsPerPage
+    );
+  };
+
+  const filteredData = data?.cars?.filter(
+    (car: { car: string; car_model: string }) =>
+      car.car.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      car.car_model.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  let cars = sliceData(filteredData, currentPage, numberOfItems);
 
   return (
     <div className="container p-2 max-w-xl mx-auto sm:px-10 rounded-2xl space-y-4 gap-10">
       {loadImage && (
         <>
+          <div className="space-x-2">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="rounded-lg border p-2"
+              placeholder="Search by car or model"
+            />
+          </div>
           <div className="w-full justify-between rounded-xl p-2 flex sm:space-x-2 items-center flex-col space-y-4 sm:space-y-0 sm:flex-row">
             <Pagination
               itemsPerPage={numberOfItems}
