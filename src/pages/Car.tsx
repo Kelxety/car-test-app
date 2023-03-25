@@ -43,7 +43,7 @@ function Car() {
       <div className="w-full flex items-center justify-center">
         <div className="container mx-auto">
           <div className="grid-cols-3 p-2 sm:p-20 space-y-2 lg:space-y-0 lg:grid lg:gap-3 lg:grid-rows-3">
-            {photos.map((photo: any, i: number) => {
+            {photos?.map((photo: any, i: number) => {
               {
                 if (i === 0) {
                   return (
