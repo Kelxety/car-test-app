@@ -28,6 +28,8 @@ function Car() {
       },
     }
   );
+
+  console.log(photos);
   if (isLoading && !photos)
     return (
       <div className="w-full flex items-center justify-center">Loading...</div>
