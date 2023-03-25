@@ -27,18 +27,18 @@ function Pagination({
         <>
           <button
             onClick={() => paginate(currentPage - 1)}
-            className="text-gray-300"
+            className="text-gray-800"
           >
             {currentPage - 1}
           </button>
         </>
       )}
-      <button className="active">{currentPage}</button>
+      <button className="active text-gray-300">{currentPage}</button>
       {showNext && (
         <>
           <button
             onClick={() => paginate(currentPage + 1)}
-            className="text-gray-300"
+            className="text-gray-800"
           >
             {currentPage + 1}
           </button>
